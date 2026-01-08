@@ -31,7 +31,7 @@ app.get("/", (req, res) => {
 });
 
 io.on("connection", (socket) => {
-  console.log("🔌 Connected:", socket.id);
+  console.log("Connected:", socket.id);
 
   
   socket.on("create_room", () => {

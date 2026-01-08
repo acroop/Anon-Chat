@@ -189,7 +189,16 @@ export function ChatRoom({ roomId, onLeave }: ChatRoomProps) {
 
   /* ---------------- UI ---------------- */
   return (
-    <div className="flex flex-col h-screen bg-background">
+     <div className="flex h-screen bg-background overflow-hidden">
+    {/* LEFT AD */}
+    <div className="hidden lg:flex w-40 xl:w-52 shrink-0 items-center justify-center bg-muted/20 border-r border-border">
+      <div className="h-[600px] w-full flex items-center justify-center border border-dashed border-border/50 rounded-lg m-2">
+        <span className="opacity-50 text-xs">Left Ad</span>
+      </div>
+    </div>
+
+    {/* MAIN CHAT AREA */}
+    <div className="flex flex-col flex-1 min-w-0">
       {/* Header */}
       <header className="flex items-center justify-between px-4 py-3 bg-card border-b">
         <button
@@ -231,7 +240,7 @@ export function ChatRoom({ roomId, onLeave }: ChatRoomProps) {
       {/* File preview */}
       {selectedFile && (
         <div className="p-2 bg-muted flex justify-between">
-          <span>{selectedFile.name}</span>
+          <span className="truncate">{selectedFile.name}</span>
           <button onClick={() => setSelectedFile(null)}>
             <X size={16} />
           </button>
@@ -247,10 +256,7 @@ export function ChatRoom({ roomId, onLeave }: ChatRoomProps) {
           onChange={handleFileSelect}
         />
 
-        <Button
-          variant="ghost"
-          onClick={() => fileInputRef.current?.click()}
-        >
+        <Button variant="ghost" onClick={() => fileInputRef.current?.click()}>
           <Paperclip />
         </Button>
 
@@ -264,6 +270,21 @@ export function ChatRoom({ roomId, onLeave }: ChatRoomProps) {
           <Send />
         </Button>
       </div>
+
+      {/* BOTTOM AD (STICKY) */}
+      <div className="sticky bottom-0 w-full bg-muted/30 border-t border-border px-4 py-2">
+        <div className="max-w-4xl mx-auto h-[90px] flex items-center justify-center border border-dashed border-border/50 rounded-lg">
+          <span className="opacity-50 text-xs">Bottom Ad</span>
+        </div>
+      </div>
     </div>
+
+    {/* RIGHT AD */}
+    <div className="hidden lg:flex w-40 xl:w-52 shrink-0 items-center justify-center bg-muted/20 border-l border-border">
+      <div className="h-[600px] w-full flex items-center justify-center border border-dashed border-border/50 rounded-lg m-2">
+        <span className="opacity-50 text-xs">Right Ad</span>
+      </div>
+    </div>
+  </div>
   );
 }
