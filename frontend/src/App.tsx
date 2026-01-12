@@ -16,10 +16,7 @@ const App = () => {
     // 🔌 connect socket once
     socket.connect();
 
-    return () => {
-      // ❌ disconnect on refresh / close
-      socket.disconnect();
-    };
+    
   }, []);
 
   return (
